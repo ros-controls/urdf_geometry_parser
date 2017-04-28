@@ -1,5 +1,5 @@
-#ifndef URDF_VEHICLE_UTILITIES_H
-#define URDF_VEHICLE_UTILITIES_H
+#ifndef URDF_UTILITIES_H
+#define URDF_UTILITIES_H
 
 #include <ros/ros.h>
 
@@ -7,10 +7,10 @@
 
 namespace urdf_utilities {
 
-class UrdfVehicleKinematic {
+class UrdfUtilities {
 
 public:
-  UrdfVehicleKinematic(ros::NodeHandle& root_nh, const std::string &base_link);
+  UrdfUtilities(ros::NodeHandle& root_nh, const std::string &base_link);
 
   /**
    * \brief Get transform vector between the joint and parent_link

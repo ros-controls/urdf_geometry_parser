@@ -65,7 +65,7 @@ static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link
 }
 
 namespace urdf_utilities{
-  UrdfVehicleKinematic::UrdfVehicleKinematic(ros::NodeHandle& root_nh, const std::string& base_link):
+  UrdfUtilities::UrdfUtilities(ros::NodeHandle& root_nh, const std::string& base_link):
     base_link_(base_link)
   {
     // Parse robot description
@@ -84,7 +84,7 @@ namespace urdf_utilities{
     }
   }
 
-  bool UrdfVehicleKinematic::getTransformVector(const std::string& joint_name, const std::string& parent_link_name
+  bool UrdfUtilities::getTransformVector(const std::string& joint_name, const std::string& parent_link_name
                                                 , urdf::Vector3 &transform_vector)
   {
     if(model_)
@@ -116,7 +116,7 @@ namespace urdf_utilities{
       return false;
   }
 
-  bool UrdfVehicleKinematic::getDistanceBetweenJoints(const std::string& first_joint_name,
+  bool UrdfUtilities::getDistanceBetweenJoints(const std::string& first_joint_name,
                                                       const std::string& second_joint_name,
                                                       double& distance)
   {
@@ -137,7 +137,7 @@ namespace urdf_utilities{
     return true;
   }
 
-  bool UrdfVehicleKinematic::getJointRadius(const std::string& joint_name,
+  bool UrdfUtilities::getJointRadius(const std::string& joint_name,
                                             double& radius)
   {
     if(model_)
@@ -155,7 +155,7 @@ namespace urdf_utilities{
       return false;
   }
 
-  bool UrdfVehicleKinematic::getJointSteeringLimits(const std::string& joint_name,
+  bool UrdfUtilities::getJointSteeringLimits(const std::string& joint_name,
                               double& steering_limit)
   {
     if(model_)
