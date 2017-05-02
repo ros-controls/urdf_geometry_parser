@@ -132,8 +132,8 @@ namespace urdf_utilities{
     tf2::convert(first_transform, v1);
     tf2::convert(second_transform, v2);
     distance = Eigen::Vector3d(v1 - v2).norm();
-    ROS_INFO_STREAM("first_transform : "<<first_transform.x<<","<<first_transform.y);
-    ROS_INFO_STREAM("distance "<<distance);
+    ROS_DEBUG_STREAM("first_transform : "<<first_transform.x<<","<<first_transform.y);
+    ROS_DEBUG_STREAM("distance "<<distance);
     return true;
   }
 
@@ -169,7 +169,7 @@ namespace urdf_utilities{
           steering_limit = upper_steering_limit;
         else
           steering_limit = lower_steering_limit;
-        ROS_INFO_STREAM("Joint "<<joint_name<<" steering limit is "<<steering_limit*180.0/M_PI<<" in degrees");
+        ROS_DEBUG_STREAM("Joint "<<joint_name<<" steering limit is "<<steering_limit*180.0/M_PI<<" in degrees");
         return true;
       }
       ROS_ERROR_STREAM("Couldn't get joint "<<joint_name<<" steering limit, is it of type REVOLUTE ?");
