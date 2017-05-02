@@ -18,7 +18,5 @@
   <depend>roscpp</depend>
   <depend>urdf</depend>
   <depend>tf2</depend>
-  <depend>tf2_urdf</depend>
-  <depend>tf2_eigen</depend>
 
 </package>

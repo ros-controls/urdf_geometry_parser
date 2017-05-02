@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(urdf_utilities)
 
-set(${PROJECT_NAME}_CATKIN_DEPS roscpp urdf tf2 tf2_urdf tf2_eigen)
+set(${PROJECT_NAME}_CATKIN_DEPS roscpp urdf tf2)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -11,17 +11,6 @@ find_package(catkin REQUIRED COMPONENTS ${${PROJECT_NAME}_CATKIN_DEPS})
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
 # catkin_python_setup()
-
-find_package(Eigen3 QUIET)
-if(NOT EIGEN3_FOUND)
-  find_package(cmake_modules REQUIRED)
-  find_package(Eigen REQUIRED)
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN_INCLUDE_DIRS})
-endif()
-
-if(NOT EIGEN3_INCLUDE_DIRS)
-  set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
-endif()
 
 ###################################
 ## catkin specific configuration ##
@@ -36,7 +25,6 @@ catkin_package(
   INCLUDE_DIRS include
   LIBRARIES ${PROJECT_NAME}
   CATKIN_DEPENDS ${${PROJECT_NAME}_CATKIN_DEPS}
-  DEPENDS EIGEN3
 )
 
 ###########
@@ -45,7 +33,6 @@ catkin_package(
 
 include_directories(
   include ${catkin_INCLUDE_DIRS}
-          ${EIGEN3_INCLUDE_DIRS}
 )
 
 ## Declare a C++ library

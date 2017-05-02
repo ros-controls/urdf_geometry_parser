@@ -2,15 +2,6 @@
 #include <urdf_utilities/urdf_utilities.h>
 
 #include <tf2/LinearMath/Vector3.h>
-#include <tf2_urdf/tf2_urdf.h>
-#include <tf2_eigen/tf2_eigen.h>
-
-static double euclideanOfVectors(const urdf::Vector3& vec1, const urdf::Vector3& vec2)
-{
-  return std::sqrt(std::pow(vec1.x-vec2.x,2) +
-                   std::pow(vec1.y-vec2.y,2) +
-                   std::pow(vec1.z-vec2.z,2));
-}
 
 /*
  * \brief Check if the link is modeled as a cylinder
@@ -128,10 +119,9 @@ namespace urdf_utilities{
     if(!getTransformVector(second_joint_name, base_link_, second_transform))
       return false;
 
-    Eigen::Vector3d v1, v2;
-    tf2::convert(first_transform, v1);
-    tf2::convert(second_transform, v2);
-    distance = Eigen::Vector3d(v1 - v2).norm();
+    tf2::Vector3 v1(first_transform.x, first_transform.y, 0.0),
+                 v2(second_transform.x, second_transform.y, 0.0);
+    distance = v1.distance(v2);
     ROS_DEBUG_STREAM("first_transform : "<<first_transform.x<<","<<first_transform.y);
     ROS_DEBUG_STREAM("distance "<<distance);
     return true;
