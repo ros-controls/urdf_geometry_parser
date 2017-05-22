@@ -1,11 +1,11 @@
-#ifndef URDF_UTILITIES_H
-#define URDF_UTILITIES_H
+#ifndef URDF_GEOMETRY_PARSER_URDF_GEOMETRY_PARSER_H
+#define URDF_GEOMETRY_PARSER_URDF_GEOMETRY_PARSER_H
 
 #include <ros/ros.h>
 
 #include <urdf_parser/urdf_parser.h>
 
-namespace urdf_utilities {
+namespace urdf_geometry_parser {
 
 class UrdfUtilities {
 

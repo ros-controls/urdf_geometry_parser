@@ -1,5 +1,5 @@
 
-#include <urdf_utilities/urdf_utilities.h>
+#include <urdf_geometry_parser/urdf_geometry_parser.h>
 
 #include <tf2/LinearMath/Vector3.h>
 
@@ -55,7 +55,7 @@ static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link
   return true;
 }
 
-namespace urdf_utilities{
+namespace urdf_geometry_parser{
   UrdfUtilities::UrdfUtilities(ros::NodeHandle& root_nh, const std::string& base_link):
     base_link_(base_link)
   {

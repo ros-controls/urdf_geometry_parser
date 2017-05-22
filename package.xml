@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>urdf_utilities</name>
+  <name>urdf_geometry_parser</name>
   <version>0.2.2</version>
-  <description>Extract kinematic value of a vehicle from urdf</description>
+  <description>Extract geometry value of a vehicle from urdf</description>
 
   <maintainer email="vincent.rousseau@irstea.fr">Vincent Rousseau</maintainer>
 
@@ -10,9 +10,9 @@
 
   <author email="vincent.rousseau@irstea.fr">Vincent Rousseau</author>
 
-  <url type="website">http://ros.org/wiki/urdf_utilities</url>
-  <url type="repository">https://github.com/ros-controls/urdf_utilities.git</url>
-  <url type="bugtracker">https://github.com/ros-controls/urdf_utilities/issues</url>
+  <url type="website">http://ros.org/wiki/urdf_geometry_parser</url>
+  <url type="repository">https://github.com/ros-controls/urdf_geometry_parser.git</url>
+  <url type="bugtracker">https://github.com/ros-controls/urdf_geometry_parser/issues</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <depend>roscpp</depend>

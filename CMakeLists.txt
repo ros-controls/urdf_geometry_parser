@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(urdf_utilities)
+project(urdf_geometry_parser)
 
 set(${PROJECT_NAME}_CATKIN_DEPS roscpp urdf tf2)
 
