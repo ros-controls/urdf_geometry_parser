@@ -36,59 +36,61 @@
 
 #include <tf2/LinearMath/Vector3.h>
 
-/*
- * \brief Check if the link is modeled as a cylinder
- * \param link Link
- * \return true if the link is modeled as a Cylinder; false otherwise
- */
-static bool isCylinder(const boost::shared_ptr<const urdf::Link>& link)
-{
-  if (!link)
-  {
-    ROS_ERROR("Link == NULL.");
-    return false;
-  }
-
-  if (!link->collision)
-  {
-    ROS_ERROR_STREAM("Link " << link->name << " does not have collision description. Add collision description for link to urdf.");
-    return false;
-  }
-
-  if (!link->collision->geometry)
-  {
-    ROS_ERROR_STREAM("Link " << link->name << " does not have collision geometry description. Add collision geometry description for link to urdf.");
-    return false;
-  }
-
-  if (link->collision->geometry->type != urdf::Geometry::CYLINDER)
-  {
-    ROS_ERROR_STREAM("Link " << link->name << " does not have cylinder geometry");
-    return false;
-  }
-
-  return true;
-}
-
-/*
- * \brief Get the wheel radius
- * \param [in]  wheel_link   Wheel link
- * \param [out] wheel_radius Wheel radius [m]
- * \return true if the wheel radius was found; false otherwise
- */
-static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link, double& wheel_radius)
-{
-  if (!isCylinder(wheel_link))
-  {
-    ROS_ERROR_STREAM("Wheel link " << wheel_link->name << " is NOT modeled as a cylinder!");
-    return false;
-  }
-
-  wheel_radius = (static_cast<urdf::Cylinder*>(wheel_link->collision->geometry.get()))->radius;
-  return true;
-}
-
 namespace urdf_geometry_parser{
+
+  /*
+   * \brief Check if the link is modeled as a cylinder
+   * \param link Link
+   * \return true if the link is modeled as a Cylinder; false otherwise
+   */
+  static bool isCylinder(const boost::shared_ptr<const urdf::Link>& link)
+  {
+    if (!link)
+    {
+      ROS_ERROR("Link == NULL.");
+      return false;
+    }
+
+    if (!link->collision)
+    {
+      ROS_ERROR_STREAM("Link " << link->name << " does not have collision description. Add collision description for link to urdf.");
+      return false;
+    }
+
+    if (!link->collision->geometry)
+    {
+      ROS_ERROR_STREAM("Link " << link->name << " does not have collision geometry description. Add collision geometry description for link to urdf.");
+      return false;
+    }
+
+    if (link->collision->geometry->type != urdf::Geometry::CYLINDER)
+    {
+      ROS_ERROR_STREAM("Link " << link->name << " does not have cylinder geometry");
+      return false;
+    }
+
+    return true;
+  }
+
+  /*
+   * \brief Get the wheel radius
+   * \param [in]  wheel_link   Wheel link
+   * \param [out] wheel_radius Wheel radius [m]
+   * \return true if the wheel radius was found; false otherwise
+   */
+  static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link, double& wheel_radius)
+  {
+    if (!isCylinder(wheel_link))
+    {
+      ROS_ERROR_STREAM("Wheel link " << wheel_link->name << " is NOT modeled as a cylinder!");
+      return false;
+    }
+
+    wheel_radius = (static_cast<urdf::Cylinder*>(wheel_link->collision->geometry.get()))->radius;
+    return true;
+  }
+
+
   UrdfGeometryParser::UrdfGeometryParser(ros::NodeHandle& root_nh, const std::string& base_link):
     base_link_(base_link)
   {
