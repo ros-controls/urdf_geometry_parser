@@ -41,10 +41,10 @@
 
 namespace urdf_geometry_parser {
 
-class UrdfUtilities {
+class UrdfGeometryParser {
 
 public:
-  UrdfUtilities(ros::NodeHandle& root_nh, const std::string &base_link);
+  UrdfGeometryParser(ros::NodeHandle& root_nh, const std::string &base_link);
 
   /**
    * \brief Get transform vector between the joint and parent_link

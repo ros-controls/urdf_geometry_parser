@@ -89,7 +89,7 @@ static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link
 }
 
 namespace urdf_geometry_parser{
-  UrdfUtilities::UrdfUtilities(ros::NodeHandle& root_nh, const std::string& base_link):
+  UrdfGeometryParser::UrdfGeometryParser(ros::NodeHandle& root_nh, const std::string& base_link):
     base_link_(base_link)
   {
     // Parse robot description
@@ -108,7 +108,7 @@ namespace urdf_geometry_parser{
     }
   }
 
-  bool UrdfUtilities::getTransformVector(const std::string& joint_name, const std::string& parent_link_name
+  bool UrdfGeometryParser::getTransformVector(const std::string& joint_name, const std::string& parent_link_name
                                                 , urdf::Vector3 &transform_vector)
   {
     if(model_)
@@ -140,7 +140,7 @@ namespace urdf_geometry_parser{
       return false;
   }
 
-  bool UrdfUtilities::getDistanceBetweenJoints(const std::string& first_joint_name,
+  bool UrdfGeometryParser::getDistanceBetweenJoints(const std::string& first_joint_name,
                                                       const std::string& second_joint_name,
                                                       double& distance)
   {
@@ -160,7 +160,7 @@ namespace urdf_geometry_parser{
     return true;
   }
 
-  bool UrdfUtilities::getJointRadius(const std::string& joint_name,
+  bool UrdfGeometryParser::getJointRadius(const std::string& joint_name,
                                             double& radius)
   {
     if(model_)
@@ -178,7 +178,7 @@ namespace urdf_geometry_parser{
       return false;
   }
 
-  bool UrdfUtilities::getJointSteeringLimits(const std::string& joint_name,
+  bool UrdfGeometryParser::getJointSteeringLimits(const std::string& joint_name,
                               double& steering_limit)
   {
     if(model_)
