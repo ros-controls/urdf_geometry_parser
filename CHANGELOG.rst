@@ -2,8 +2,8 @@
 Changelog for package urdf_geometry_parser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.2 (2017-07-04)
+------------------
 * use urdf typedefs (fix builds on Ubuntu Y, Z and Debian Stretch)
 * Contributors: Mikael Arguedas
 
