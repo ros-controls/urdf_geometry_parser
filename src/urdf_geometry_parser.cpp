@@ -43,7 +43,7 @@ namespace urdf_geometry_parser{
    * \param link Link
    * \return true if the link is modeled as a Cylinder; false otherwise
    */
-  static bool isCylinder(const boost::shared_ptr<const urdf::Link>& link)
+  static bool isCylinder(urdf::LinkConstSharedPtr& link)
   {
     if (!link)
     {
@@ -78,7 +78,7 @@ namespace urdf_geometry_parser{
    * \param [out] wheel_radius Wheel radius [m]
    * \return true if the wheel radius was found; false otherwise
    */
-  static bool getWheelRadius(const boost::shared_ptr<const urdf::Link>& wheel_link, double& wheel_radius)
+  static bool getWheelRadius(urdf::LinkConstSharedPtr wheel_link, double& wheel_radius)
   {
     if (!isCylinder(wheel_link))
     {
@@ -115,7 +115,7 @@ namespace urdf_geometry_parser{
   {
     if(model_)
     {
-      boost::shared_ptr<const urdf::Joint> joint(model_->getJoint(joint_name));
+      urdf::JointConstSharedPtr joint(model_->getJoint(joint_name));
       if (!joint)
       {
         ROS_ERROR_STREAM(joint_name
@@ -126,7 +126,7 @@ namespace urdf_geometry_parser{
       transform_vector = joint->parent_to_joint_origin_transform.position;
       while(joint->parent_link_name != parent_link_name)
       {
-        boost::shared_ptr<const urdf::Link> link_parent(model_->getLink(joint->parent_link_name));
+        urdf::LinkConstSharedPtr link_parent(model_->getLink(joint->parent_link_name));
         if (!link_parent || !link_parent->parent_joint)
         {
           ROS_ERROR_STREAM(joint->parent_link_name
@@ -167,7 +167,7 @@ namespace urdf_geometry_parser{
   {
     if(model_)
     {
-      boost::shared_ptr<const urdf::Joint> joint(model_->getJoint(joint_name));
+      urdf::JointConstSharedPtr joint(model_->getJoint(joint_name));
       // Get wheel radius
       if (!getWheelRadius(model_->getLink(joint->child_link_name), radius))
       {
@@ -185,7 +185,7 @@ namespace urdf_geometry_parser{
   {
     if(model_)
     {
-      boost::shared_ptr<const urdf::Joint> joint(model_->getJoint(joint_name));
+      urdf::JointConstSharedPtr joint(model_->getJoint(joint_name));
       if(joint->type == urdf::Joint::REVOLUTE)
       {
         const double lower_steering_limit = fabs(joint->limits->lower);

@@ -89,7 +89,7 @@ public:
 private:
   std::string base_link_;
 
-  boost::shared_ptr<urdf::ModelInterface> model_;
+  urdf::ModelInterfaceSharedPtr model_;
 };
 
 } // urdf_geometry_parser
