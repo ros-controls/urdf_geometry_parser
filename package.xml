@@ -20,4 +20,6 @@
   <depend>urdf</depend>
   <depend>tf2</depend>
 
+  <test_depend>rostest</test_depend>
+
 </package>
