@@ -37,6 +37,7 @@
 
 #include <ros/ros.h>
 
+#include <urdf/urdfdom_compatibility.h>
 #include <urdf_parser/urdf_parser.h>
 
 namespace urdf_geometry_parser {
