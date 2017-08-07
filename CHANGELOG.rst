@@ -2,6 +2,15 @@
 Changelog for package urdf_geometry_parser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add travis config, based on industrial_ci
+* Make sure to include urdfdom_compatibility.h.
+  This ensures that urdf_geometry_parser will build on all distros
+  (including older Debian Jessie).
+  Signed-off-by: Chris Lalancette <clalancette@osrfoundation.org>
+* Contributors: Bence Magyar, Chris Lalancette, Mathias Lüdtke
+
 0.0.2 (2017-07-04)
 ------------------
 * use urdf typedefs (fix builds on Ubuntu Y, Z and Debian Stretch)
