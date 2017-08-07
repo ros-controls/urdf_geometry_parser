@@ -2,8 +2,8 @@
 Changelog for package urdf_geometry_parser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.0.3 (2017-08-07)
+------------------
 * add travis config, based on industrial_ci
 * Make sure to include urdfdom_compatibility.h.
   This ensures that urdf_geometry_parser will build on all distros
