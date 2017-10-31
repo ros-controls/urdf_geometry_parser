@@ -76,7 +76,7 @@ public:
    * \return true if the radius was found; false otherwise
    */
   bool getJointRadius(const std::string& joint_name,
-                                double& radius);
+                      double& radius);
 
   /**
    * \brief Get joint steering limit from the URDF
@@ -87,8 +87,21 @@ public:
    */
   bool getJointSteeringLimits(const std::string& joint_name,
                               double& steering_limit);
-private:
-  std::string base_link_;
+
+
+  /**
+   * \brief Get joint angular speed limit from the URDF
+   * \param joint_name Name of the joint
+   * \param angular_speed_limit [rad/s]
+   * \return true if the angular speed limit was found; false otherwise
+   */
+
+  bool getJointAngularSpeedLimit(const std::string& joint_name,
+                                 double & angular_speed_limit);
+
+
+  private:
+    std::string base_link_;
 
   urdf::ModelInterfaceSharedPtr model_;
 };

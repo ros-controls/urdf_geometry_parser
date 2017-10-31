@@ -201,4 +201,22 @@ namespace urdf_geometry_parser{
     }
     return false;
   }
+
+  bool UrdfGeometryParser::getJointAngularSpeedLimit(const std::string& joint_name,
+                                                     double & angular_speed_limit)
+  {
+    if(model_)
+    {
+      urdf::JointConstSharedPtr joint(model_->getJoint(joint_name));
+      if(joint->type == urdf::Joint::CONTINUOUS)
+      {
+        angular_speed_limit = fabs(joint->limits->velocity);
+        ROS_DEBUG_STREAM("Joint "<<joint_name<<" speed limit is "<<angular_speed_limit*180.0/M_PI<<" in degrees");
+        return true;
+      }
+      ROS_ERROR_STREAM("Couldn't get joint "<<joint_name<<" angular speed limit, is it of type CONTINOUS ?");
+    }
+    return false;
+  }
+
 }
