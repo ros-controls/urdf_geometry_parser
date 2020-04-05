@@ -36,6 +36,20 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 
 #############
+## Testing ##
+#############
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+
+  add_rostest_gtest(urdf_geometry_parser_test
+                    test/urdf_geometry_parser.test
+                    test/src/urdf_geometry_parser_test.cpp)
+  target_link_libraries(urdf_geometry_parser_test ${catkin_LIBRARIES} ${PROJECT_NAME})
+endif()
+
+
+#############
 ## Install ##
 #############
 
