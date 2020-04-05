@@ -22,4 +22,5 @@
   <build_depend>tf2</build_depend>
 
   <test_depend>rostest</test_depend>
+  <test_depend>xacro</test_depend>
 </package>

@@ -36,6 +36,21 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 
 #############
+## Testing ##
+#############
+
+if(CATKIN_ENABLE_TESTING)
+  find_package(rostest REQUIRED)
+  find_package(xacro REQUIRED)
+
+  add_rostest_gtest(urdf_geometry_parser_test
+                    test/urdf_geometry_parser.test
+                    test/src/urdf_geometry_parser_test.cpp)
+  target_link_libraries(urdf_geometry_parser_test ${catkin_LIBRARIES} ${PROJECT_NAME})
+endif()
+
+
+#############
 ## Install ##
 #############
 
@@ -50,11 +65,3 @@ install(TARGETS ${PROJECT_NAME}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_GLOBAL_BIN_DESTINATION}
 )
-
-if(CATKIN_ENABLE_TESTING)
-  find_package(catkin REQUIRED COMPONENTS rostest ${${PROJECT_NAME}_CATKIN_DEPS} ${PROJECT_NAME})
-  add_rostest_gtest(urdf_geometry_parser_test
-                    test/urdf_geometry_parser.test
-                    test/src/urdf_geometry_parser_test.cpp)
-  target_link_libraries(urdf_geometry_parser_test ${catkin_LIBRARIES})
-endif()
