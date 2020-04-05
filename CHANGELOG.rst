@@ -2,6 +2,14 @@
 Changelog for package urdf_geometry_parser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* Remove tf2 dependency
+* Add license
+* Bump CMake version to avoid CMP0048 warning
+* Cleanup CMakeLists.txt and package.xml
+* Contributors: Bence Magyar, Matt Reynolds, Vincent Rousseau
+
 0.0.3 (2017-08-07)
 ------------------
 * add travis config, based on industrial_ci
