@@ -1,3 +1,4 @@
+<?xml version="1.0"?>
 <launch>
   <param name="robot_description"
        command="$(find xacro)/xacro --inorder '$(find urdf_geometry_parser)/test/urdf/four_wheel_steering.urdf.xacro'" />
