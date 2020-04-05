@@ -47,12 +47,15 @@ public:
   urdf_geometry_parser::UrdfGeometryParser ugp_;
 };
 
-TEST_F(UrdfGeometryParserTest, testRadius)
+TEST_F(UrdfGeometryParserTest, testTransformVector)
 {
-  double wheel_radius;
-  bool result = ugp_.getJointRadius("front_left_wheel", wheel_radius);
+  urdf::Vector3 transform_vector;
+
+  bool result = ugp_.getTransformVector("front_left_wheel", "base_link", transform_vector);
   EXPECT_TRUE(result);
-  EXPECT_DOUBLE_EQ(wheel_radius, 0.28);
+  EXPECT_DOUBLE_EQ(transform_vector.x, ( 1.90 / 2));
+  EXPECT_DOUBLE_EQ(transform_vector.y, ( 1.10 / 2));
+  EXPECT_DOUBLE_EQ(transform_vector.z, (-0.66 / 2) + 0.28 - 0.19);
 }
 
 TEST_F(UrdfGeometryParserTest, testDistance)
@@ -66,6 +69,14 @@ TEST_F(UrdfGeometryParserTest, testDistance)
   bool result_wb = ugp_.getDistanceBetweenJoints("front_right_wheel", "rear_right_wheel", wheel_base);
   EXPECT_TRUE(result_wb);
   EXPECT_DOUBLE_EQ(wheel_base, 1.9);
+}
+
+TEST_F(UrdfGeometryParserTest, testRadius)
+{
+  double wheel_radius;
+  bool result = ugp_.getJointRadius("front_left_wheel", wheel_radius);
+  EXPECT_TRUE(result);
+  EXPECT_DOUBLE_EQ(wheel_radius, 0.28);
 }
 
 TEST_F(UrdfGeometryParserTest, testJointSteeringLimits)
