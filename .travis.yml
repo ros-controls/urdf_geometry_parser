@@ -1,4 +1,3 @@
-sudo: required
 language: generic
 services:
   - docker
@@ -6,10 +5,11 @@ services:
 env:
   matrix:
     - ROS_DISTRO=kinetic ROS_REPO=ros
-    - ROS_DISTRO=kinetic ROS_REPO=ros-shadow-fixed
-    - ROS_DISTRO=kinetic ROS_REPO=ros OS_NAME=debian OS_CODE_NAME=jessie
-    - ROS_DISTRO=lunar   ROS_REPO=ros
-    - ROS_DISTRO=lunar   ROS_REPO=ros-shadow-fixed
+    - ROS_DISTRO=kinetic ROS_REPO=ros-testing
+    - ROS_DISTRO=melodic ROS_REPO=ros
+    - ROS_DISTRO=melodic ROS_REPO=ros-testing
 
-install: git clone --depth=1 https://github.com/ros-industrial/industrial_ci.git .ci_config
-script: .ci_config/travis.sh
+install:
+  - git clone --depth=1 https://github.com/ros-industrial/industrial_ci.git .industrial_ci
+script:
+  - .industrial_ci/travis.sh
