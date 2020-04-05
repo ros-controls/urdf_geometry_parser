@@ -1,6 +1,6 @@
 <package format="2">
   <name>urdf_geometry_parser</name>
-  <version>0.0.3</version>
+  <version>0.1.0</version>
   <description>Extract geometry value of a vehicle from urdf.</description>
 
   <maintainer email="vincent.rousseau@irstea.fr">Vincent Rousseau</maintainer>
