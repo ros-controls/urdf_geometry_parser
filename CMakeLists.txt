@@ -4,7 +4,6 @@ project(urdf_geometry_parser)
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED COMPONENTS
   roscpp
-  tf2
   urdf
 )
 
