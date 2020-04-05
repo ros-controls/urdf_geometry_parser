@@ -34,7 +34,7 @@
 
 #include <urdf_geometry_parser/urdf_geometry_parser.h>
 
-#include <tf2/LinearMath/Vector3.h>
+#include <cmath>
 
 namespace urdf_geometry_parser{
 
@@ -154,11 +154,9 @@ namespace urdf_geometry_parser{
     if(!getTransformVector(second_joint_name, base_link_, second_transform))
       return false;
 
-    tf2::Vector3 v1(first_transform.x, first_transform.y, 0.0),
-                 v2(second_transform.x, second_transform.y, 0.0);
-    distance = v1.distance(v2);
-    ROS_DEBUG_STREAM("first_transform : "<<first_transform.x<<","<<first_transform.y);
-    ROS_DEBUG_STREAM("distance "<<distance);
+    // Calculate the Euclidean distance using the Pythagorean formula
+    distance = std::sqrt(std::pow(first_transform.x - second_transform.x, 2)
+                         + std::pow(first_transform.y - second_transform.y, 2));
     return true;
   }
 
