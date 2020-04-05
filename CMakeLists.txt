@@ -41,7 +41,6 @@ target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
 
 if(CATKIN_ENABLE_TESTING)
   find_package(rostest REQUIRED)
-  find_package(xacro REQUIRED)
 
   add_rostest_gtest(urdf_geometry_parser_test
                     test/urdf_geometry_parser.test
