@@ -178,6 +178,24 @@ namespace urdf_geometry_parser{
       return false;
   }
 
+  bool UrdfGeometryParser::getLinkCollisionGeometry(const std::string& link_name,
+                                                    urdf::GeometrySharedPtr& geometry)
+  {
+    if(model_)
+    {
+      urdf::LinkConstSharedPtr link(model_->getLink(link_name));
+      if (!link)
+      {
+        ROS_ERROR_STREAM(link_name << " couldn't be retrieved from model description");
+        return false;
+      }
+      geometry = link->collision->geometry;
+      return true;
+    }
+    else
+      return false;
+  }
+
   bool UrdfGeometryParser::getJointSteeringLimits(const std::string& joint_name,
                               double& steering_limit)
   {
